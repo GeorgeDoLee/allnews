@@ -5,6 +5,30 @@ import useFetch from '../hooks/useFetch'
 import MainArticle from '../components/MainArticle'
 import Articles from '../components/Articles'
 import PublisherBar from '../components/PublisherBar'
+import BlindspotBar from '../components/BlindspotBar'
+import TopNewsBar from '../components/TopNewsBar'
+
+const SubArticles = ({subArticles}) => {
+  return (
+    <div className='flex flex-col gap-5 mt-5 font-firago'>
+      {subArticles && subArticles.map((subArticle, index) => (
+        <a 
+          key={index}
+          href={subArticle.url}
+          className='p-4 rounded-md bg-dark bg-opacity-10'
+        >
+          <p className='pb-2 mb-2 text-sm border-b w-fit case-on border-dark'>
+            {subArticle.publisher.name}
+          </p>
+          
+          <h1 className='text-base line-clamp-3 text-dark'>
+            {subArticle.title}
+          </h1>
+        </a>
+      ))}
+    </div>
+  )
+}
 
 const ArticlePage = () => {
     const { id } = useParams()
@@ -49,7 +73,25 @@ const ArticlePage = () => {
     <MainLayout>
       <section className='px-20 py-5'>
         <div className='flex justify-between gap-5'>
-          <div className='flex flex-col w-[65%] gap-5'>
+          <div className='flex flex-col w-[20%] gap-5'>
+            <PublisherBar />
+            
+            <div className='border-b border-dark' />
+            
+            <div className='w-full'>
+              <BlindspotBar />
+            </div>
+            
+            <div className='border-b border-dark' />
+
+            <div className='w-full'>
+              <TopNewsBar />
+            </div>
+          </div>
+
+          <div className='border-r border-dark' />
+
+          <div className='flex flex-col w-[80%] gap-5'>
             {isLoading && <p>Loading...</p>}
             {error && <p>{error}</p>}
             <div className='flex flex-col w-full gap-5'>
@@ -77,63 +119,37 @@ const ArticlePage = () => {
                   </div>
                 ))}
               </div>
+
+              <div>
+                <div className='flex justify-around gap-1 p-2 w-fit bg-dark bg-opacity-10'>
+                  {positions.map((position, index) => (
+                    <>
+                      <button  
+                        key={index}
+                        onClick={() => setPositionFilter(position.value)}
+                        className={`px-2 py-1 text-base rounded-sm case-on font-firago w-full
+                          ${position.value === positionFilter ? 'bg-opacity-100 text-white' : 'bg-opacity-0'}
+                          ${position.value === 'opp' ? ' bg-opp' : ''}
+                          ${position.value === 'center' ? ' bg-center' : ''}
+                          ${position.value === 'gov' ? ' bg-gov' : ''}
+                          ${position.value === null ? ' bg-dark' : ''}`
+                        }
+                      >
+                        {position.title}
+                      </button>
+                      <div className='border-r last-of-type:hidden border-dark' />
+                    </>
+                  ))}
+                </div>
+                
+                <SubArticles subArticles={subArticles} />
+              </div>
             </div>
 
             <div className='border-b border-dark' />
             
             <div className='w-full'>
               <Articles />
-            </div>
-          </div>
-            
-          <div className='border-r border-dark' />
-
-          <div className='flex flex-col w-[35%] gap-5'>
-            <PublisherBar />
-            
-            <div className='border-b border-dark' />
-            
-            <div>
-              <div className='flex justify-around w-full gap-1 p-2 bg-dark bg-opacity-10'>
-                {positions.map((position, index) => (
-                  <>
-                    <button  
-                      key={index}
-                      onClick={() => setPositionFilter(position.value)}
-                      className={`px-2 py-1 text-sm rounded-sm case-on font-firago
-                        ${position.value === positionFilter ? 'bg-opacity-100 text-white' : 'bg-opacity-0'}
-                        ${position.value === 'opp' ? ' bg-opp' : ''}
-                        ${position.value === 'center' ? ' bg-center' : ''}
-                        ${position.value === 'gov' ? ' bg-gov' : ''}
-                        ${position.value === null ? ' bg-dark' : ''}`
-                      }
-                    >
-                      {position.title}
-                    </button>
-                    <div className='border-r last-of-type:hidden border-dark' />
-                  </>
-                ))}
-              </div>
-              
-              <div className='flex flex-col gap-5 mt-5 font-firago'>
-                {subArticles && subArticles.map((subArticle, index) => (
-                  <a 
-                    key={index}
-                    href={subArticle.url}
-                    className='p-4 rounded-md bg-dark bg-opacity-10'
-                  >
-                    <p className='mb-2 text-xs w-fit case-on'>
-                      {subArticle.publisher.name}
-                    </p>
-
-                    <div className='mb-2 border-b border-dark'/>
-                    
-                    <h1 className='text-sm line-clamp-3 text-dark'>
-                      {subArticle.title}
-                    </h1>
-                  </a>
-                ))}
-              </div>
             </div>
           </div>
         </div>

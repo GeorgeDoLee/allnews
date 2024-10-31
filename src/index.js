@@ -8,15 +8,25 @@ import {
 
 import Home from './pages/Home';
 import ArticlePage from './pages/ArticlePage'
+import NewsPage from './pages/NewsPage';
+import BlindspotsPage from './pages/BlindspotsPage';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Home />,
   },
   {
-    path: "/article/:id",
+    path: '/article/:id',
     element: <ArticlePage />
+  },
+  {
+    path: 'news',
+    element: <NewsPage />
+  },
+  {
+    path: 'blindspots',
+    element: <BlindspotsPage />
   }
 ]);
 

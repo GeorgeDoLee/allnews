@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { CiSearch } from "react-icons/ci";
 import Logo from './Logo';
 import { RxHamburgerMenu } from "react-icons/rx";
+import { Link } from 'react-router-dom';
 
 
 const Header = () => {
@@ -25,16 +26,16 @@ const Header = () => {
                 className='flex flex-col gap-8 font-semibold text-newspaper lg:text-lg text-md lg:text-dark lg:flex-row font-firago case-on'
               >
                   <li>
-                      მთავარი
+                    <Link to='/'>მთავარი</Link> 
                   </li>
                   <li>
-                      ახალი ამბები
+                    <Link to='/news'>ახალი ამბები</Link> 
                   </li>
                   <li>
-                      ბრმა წერტილები
+                    <Link to='/blindspots'>ბრმა წერტილები</Link> 
                   </li>
                   <li>
-                      ჩვენს შესახებ
+                    <Link to='/about-us'>ჩვენს შესახებ</Link> 
                   </li>
               </ul>
           </nav>
@@ -42,7 +43,7 @@ const Header = () => {
           <div className='flex items-center justify-between gap-1 px-4 py-1 border border-newspaper lg:border-dark'>
             <input 
               type="text" 
-              placeholder='Search...' 
+              placeholder='ძებნა...' 
               className='w-full bg-transparent outline-none placeholder:text-newspaper lg:placeholder:text-dark text-md text-newspaper lg:text-dark font-firago' 
             />
             <CiSearch className='w-auto h-6 text-newspaper lg:text-dark' />
