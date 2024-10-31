@@ -6,7 +6,7 @@ const BlindspotBar = () => {
 
   return (
     <section className='w-full'>
-        <h1 className='mb-3 text-xl font-semibold text-dark font-firago'>ბრმა წერტილები</h1>
+        <h1 className='mb-3 text-xl font-semibold text-dark font-firago case-on'>ბრმა წერტილები</h1>
         
         {error && <p>{error}</p>}
         {isLoading && <p>Loading...</p>}
@@ -19,7 +19,6 @@ const BlindspotBar = () => {
                         <div className='flex items-center gap-2 mt-1'>
                             {index % 2 === 0 && 
                                 <div className='flex w-1/4 h-2'>
-                                    
                                     <div className='w-[85%] h-full bg-opp' />
                                     <div className='w-[10%] h-full bg-center' />
                                     <div className='w-[5%] h-full bg-blue-800' />

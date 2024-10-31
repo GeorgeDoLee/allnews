@@ -7,30 +7,30 @@ const Articles = () => {
     
   return (
     <section>
-        <div className='flex flex-col gap-10 mt-2 text-dark font-firago'>
+        <div className='flex flex-col gap-5 mt-2 lg:gap-10 text-dark font-firago'>
             {isLoading && <p>loading...</p>}
             {error && <p>{error}</p>}
             {articles && articles.map((article, index) => (
                 <Link 
                     to={`/article/${article._id}`}
                     key={index} 
-                    className='flex items-center gap-3 rounded-md text-dark'
+                    className='flex flex-col-reverse items-center gap-2 rounded-md lg:gap-3 lg:flex-row text-dark'
                 >
                     <div>
-                        <p className='mb-2 text-sm case-on'>თემა &middot; კატეგორია</p>
-                        <h1 className='text-lg text-dark line-clamp-4'>
+                        <p className='mb-1 text-xs lg:mb-2 lg:text-sm case-on'>თემა &middot; კატეგორია</p>
+                        <h1 className='text-base lg:text-lg text-dark line-clamp-4'>
                             {article.title}
                         </h1>
-                        <div className='flex items-center gap-2 mt-2'>
-                            <div className='flex w-1/5 h-2'>
+                        <div className='flex flex-col items-center gap-1 mt-2 lg:gap-2 lg:flex-row'>
+                            <div className='flex self-start w-1/5 h-2'>
                                 <div className='w-[43%] h-full bg-opp' />
                                 <div className='w-[25%] h-full bg-center' />
                                 <div className='w-[32%] h-full bg-gov' />
                             </div>
-                            <p className='text-sm'>43% სამთავრობო წყაროები: 25 სტატია</p>
+                            <p className='self-start text-xs lg:text-sm'>43% სამთავრობო წყაროები: 25 სტატია</p>
                         </div>
                     </div>
-                    <div className='w-[450px] bg-dark h-[150px]' /> 
+                    <div className='lg:w-[450px] w-full bg-dark h-[200px] lg:h-[150px]' /> 
                 </Link>
             ))}
             <button className='self-center px-5 py-2 text-base font-semibold border w-fit text-dark border-dark font-firago case-on'>
