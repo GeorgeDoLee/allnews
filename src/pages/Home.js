@@ -5,12 +5,10 @@ import MainArticle from '../components/MainArticle'
 import TopNewsBar from '../components/TopNewsBar'
 import Articles from '../components/Articles'
 import PublisherBar from '../components/PublisherBar'
-import TrendBar from '../components/TrendBar'
 
 const Home = () => {
   return (
     <MainLayout>
-      <TrendBar />
       <div className='flex flex-col gap-5 px-8 py-3 lg:px-20 lg:py-5'>
         <div className='flex flex-col justify-between gap-5 lg:flex-row'>
           <div className='lg:w-[75%] w-full flex items-center justify-center'>

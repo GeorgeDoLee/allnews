@@ -9,13 +9,13 @@ const MainArticle = () => {
                 თბილისის ქუჩებში მოსალოდნელია გადატვირთული მოძრაობა
             </h1>
             <div className='flex w-full h-3 mt-2 lg:mt-5 lg:h-8 font-firago case-on'>
-                <div className='w-[32%] bg-opp flex justify-center items-center text-white lg:text-md text-[7px] lg:font-semibold'>
+                <div className='w-[32%] bg-opp flex justify-center items-center text-white lg:text-base text-[7px] lg:font-semibold'>
                     ოპოზიციური 32%
                 </div>
-                <div className='w-[25%] bg-center flex justify-center items-center text-dark lg:text-md text-[7px] lg:font-semibold'>
+                <div className='w-[25%] bg-center flex justify-center items-center text-dark lg:text-base text-[7px] lg:font-semibold'>
                     ცენტრისტული 25%
                 </div>
-                <div className='w-[43%] bg-gov flex justify-center items-center text-white lg:text-md text-[7px] lg:font-semibold'>
+                <div className='w-[43%] bg-gov flex justify-center items-center text-white lg:text-base text-[7px] lg:font-semibold'>
                     სამთავრობო 43%
                 </div>
             </div>

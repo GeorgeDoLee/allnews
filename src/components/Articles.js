@@ -21,13 +21,13 @@ const Articles = () => {
                         <h1 className='text-base lg:text-lg text-dark line-clamp-4'>
                             {article.title}
                         </h1>
-                        <div className='flex flex-col items-center gap-1 mt-2 lg:gap-2 lg:flex-row'>
-                            <div className='flex self-start w-1/5 h-2'>
+                        <div className='flex flex-col items-start gap-1 mt-2 lg:items-center lg:gap-2 lg:flex-row'>
+                            <div className='flex w-1/5 h-2'>
                                 <div className='w-[43%] h-full bg-opp' />
                                 <div className='w-[25%] h-full bg-center' />
                                 <div className='w-[32%] h-full bg-gov' />
                             </div>
-                            <p className='self-start text-xs lg:text-sm'>43% სამთავრობო წყაროები: 25 სტატია</p>
+                            <p className='text-xs lg:text-sm'>43% სამთავრობო წყაროები: 25 სტატია</p>
                         </div>
                     </div>
                     <div className='lg:w-[450px] w-full bg-dark h-[200px] lg:h-[150px]' /> 

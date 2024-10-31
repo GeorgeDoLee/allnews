@@ -19,7 +19,7 @@ const Footer = () => {
     <section className='bg-dark'>
         <div className='flex flex-col px-20 py-14 gap-14'>
             <div className='flex flex-col gap-10 text-white lg:flex-row lg:gap-52 font-firago'>
-                <div className='flex'>
+                <div className='flex lg:block'>
                     <Logo />
                 </div>
                 <div className='flex flex-col gap-10 lg:flex-row lg:gap-52'>
