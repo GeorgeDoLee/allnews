@@ -10,11 +10,13 @@ import Home from './pages/Home';
 import ArticlePage from './pages/ArticlePage'
 import NewsPage from './pages/NewsPage';
 import BlindspotsPage from './pages/BlindspotsPage';
+import ErrorPage from './pages/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Home />,
+    errorElement: <ErrorPage />
   },
   {
     path: '/article/:id',
