@@ -1,9 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import MainLayout from '../components/MainLayout'
-import { useLocation } from 'react-router-dom'
 
 const ErrorPage = () => {
-    const { pathname } = useLocation();
   return (
     <MainLayout>
         <section className='mx-auto py-36 w-fit'>

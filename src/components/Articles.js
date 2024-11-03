@@ -3,7 +3,7 @@ import useFetch from '../hooks/useFetch'
 import { Link } from 'react-router-dom';
 
 const Articles = ({isBlindspot = false}) => {
-    const {data: articles, isLoading, error} = useFetch('/articleGroups')
+    const {data: articles, isLoading, error} = useFetch('http://localhost:5000/api/articleGroups')
     
   return (
     <section>

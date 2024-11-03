@@ -10,7 +10,7 @@ const TrendBar = () => {
                 {Array.from({length: 10}).map((_, index) => (
                     <div 
                         key={index}
-                        className='p-2 text-xs rounded-full lg:text-sm bg-dark bg-opacity-10 font-firago case-on whitespace-nowrap'
+                        className='p-2 text-xs rounded-full lg:text-sm bg-dark bg-opacity-10 font-firago whitespace-nowrap'
                     > 
                         ტრენდული თემა
                     </div>

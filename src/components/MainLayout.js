@@ -3,6 +3,7 @@ import Header from './Header'
 import Footer from './Footer'
 import TrendBar from './TrendBar'
 import { useLocation } from 'react-router-dom'
+import ToastManager from './Toast'
 
 const MainLayout = ({children}) => {
   const { pathname } = useLocation();
@@ -19,6 +20,7 @@ const MainLayout = ({children}) => {
         {children}
       </div>
       <Footer />
+      <ToastManager />
     </div>
   )
 }

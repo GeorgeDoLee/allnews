@@ -11,6 +11,7 @@ import ArticlePage from './pages/ArticlePage'
 import NewsPage from './pages/NewsPage';
 import BlindspotsPage from './pages/BlindspotsPage';
 import ErrorPage from './pages/ErrorPage';
+import AdminPage from './pages/AdminPage';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: 'blindspots',
     element: <BlindspotsPage />
+  },
+  {
+    path: 'admin',
+    element: <AdminPage />
   }
 ]);
 

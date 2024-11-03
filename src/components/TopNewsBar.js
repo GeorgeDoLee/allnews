@@ -3,7 +3,7 @@ import useFetch from '../hooks/useFetch'
 
 
 const TopNewsBar = () => {
-    const {data: articles, isLoading, error} = useFetch('/articleGroups')
+    const {data: articles, isLoading, error} = useFetch('http://localhost:5000/api/articleGroups')
 
   return (
     <section className='w-full'>
