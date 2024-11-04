@@ -20,6 +20,26 @@ export const postPublisher = async (data) => {
     }
 };
 
+export const putPublisher = async (id, data) => {
+    try {
+        const response = await fetch(`${API_URL}/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error: ${response.statusText}`);
+        }
+
+        return await response.json();
+    } catch (error) {
+        throw error;
+    }
+};
+
 export const deletePublisher = async (id) => {
     try {
         const response = await fetch(`${API_URL}/${id}`, {

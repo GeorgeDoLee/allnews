@@ -5,13 +5,14 @@ import { toast } from './Toast';
 import { deletePublisher } from '../services/apiServices';
 
 const PublisherManager = () => {
-    const {data: publishers, isLoading, error} = useFetch('https://localhost:7040/api/Publisher');
+    const {data: publishers, isLoading, error, refetch} = useFetch('https://localhost:7040/api/Publisher');
 
     const handleDelete = async (id, name) => {
         if(window.confirm(`ნამდვილად გსურთ წაშალოთ ${name}?`)){
             try {
                 await deletePublisher(id);
                 toast.success('მედია წაიშალა წარმატებით')
+                refetch();
             } catch (error) {
                 toast.error('მოხდა შეცდომა')
             }
@@ -28,7 +29,7 @@ const PublisherManager = () => {
             <h1 className='mb-2 text-lg font-semibold font-firago case-on text-dark'>მედია</h1>
             <div className='grid grid-cols-8 gap-2'>
                 {isLoading && <p>იტვირთება...</p>}
-                {error && <p>{error}</p>}
+                {error && <p>{error.message}</p>}
                 {publishers && Array.from({length: 11}).map(() => publishers.map((publisher) => (
                     <div
                         key={publisher.id}

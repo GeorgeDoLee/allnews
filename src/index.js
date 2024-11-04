@@ -12,6 +12,7 @@ import NewsPage from './pages/NewsPage';
 import BlindspotsPage from './pages/BlindspotsPage';
 import ErrorPage from './pages/ErrorPage';
 import AdminPage from './pages/AdminPage';
+import UploadPublisherPage from './pages/UploadPublisherPage';
 
 const router = createBrowserRouter([
   {
@@ -24,16 +25,24 @@ const router = createBrowserRouter([
     element: <ArticlePage />
   },
   {
-    path: 'news',
+    path: '/news',
     element: <NewsPage />
   },
   {
-    path: 'blindspots',
+    path: '/blindspots',
     element: <BlindspotsPage />
   },
   {
-    path: 'admin',
+    path: '/admin',
     element: <AdminPage />
+  },
+  {
+    path: '/admin/publisher',
+    element: <UploadPublisherPage />
+  },
+  {
+    path: '/admin/publisher/:id',
+    element: <UploadPublisherPage />
   }
 ]);
 
