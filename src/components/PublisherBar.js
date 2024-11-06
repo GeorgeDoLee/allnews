@@ -3,19 +3,26 @@ import useFetch from "../hooks/useFetch"
 
 const PublisherRenderer = ({publishers}) => {
     return (
-        <div className='flex flex-col gap-2'>
+        <div className='flex flex-col gap-3'>
             {publishers.map((publisher, index) => (
-                // <p key={index} className='px-2 py-1 border-2 rounded-md border-dark text-dark'>
-                //     {/* {publisher.name} */}
-                // </p>
-                <div className='w-12 h-12 rounded-full bg-dark'></div>
+                <>
+                    {publisher.logo ? 
+                        <img 
+                            src={publisher.logo}
+                            alt={publisher.name} 
+                            className="object-contain w-12 h-12 rounded-full"
+                        /> 
+                        :
+                        <div className='w-12 h-12 rounded-full bg-dark' />
+                    }
+                </>
             ))}
         </div>
     )
 }
 
 const PublisherBar = () => {
-    const { data: publishers, isLoading, error } = useFetch('/publishers');
+    const { data: publishers, isLoading, error } = useFetch('https://localhost:7040/api/Publisher');
     const [govPublishers, setGovPublishers] = useState(null);
     const [centerPublishers, setCenterPublishers] = useState(null);
     const [oppPublishers, setOppPublishers] = useState(null);

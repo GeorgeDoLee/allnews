@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 const Toast = ({ message, type }) => {
   return (
     <div 
-        className={`text-lg font-firago absolute top-10 left-1/2 transform -translate-x-1/2 
-            bg-newspaper px-10 py-5 shadow-lg rounded-md border border-dark
+        className={`text-lg font-firago absolute bottom-10 right-10 transform
+            bg-newspaper px-10 py-5 shadow-lg rounded-md
             ${type === 'success' ? 'text-green-500' : 'text-red-500'}`}
     >
       <span>{message}</span>
