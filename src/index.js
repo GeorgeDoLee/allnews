@@ -13,6 +13,7 @@ import BlindspotsPage from './pages/BlindspotsPage';
 import ErrorPage from './pages/ErrorPage';
 import AdminPage from './pages/AdminPage';
 import UploadPublisherPage from './pages/UploadPublisherPage';
+import UploadArticlePage from './pages/UploadArticlePage';
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
   {
     path: '/admin/publisher/:id',
     element: <UploadPublisherPage />
+  },
+  {
+    path: '/admin/article',
+    element: <UploadArticlePage />
   }
 ]);
 

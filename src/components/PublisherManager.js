@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import useFetch from '../hooks/useFetch';
 import { Link } from 'react-router-dom';
 import { toast } from './Toast';
@@ -20,11 +20,6 @@ const PublisherManager = () => {
     }
 
   return (
-    <div className='flex flex-col gap-5'>
-        <Link to="/admin/publisher" className='self-start px-4 py-2 text-base border border-dark text-dark'>მედიის დამატება</Link>
-
-        <div className='border-b border-dark'></div>
-        
         <div className='w-full'> 
             <h1 className='mb-2 text-lg font-semibold font-firago case-on text-dark'>მედია</h1>
             <div className='flex flex-wrap gap-2'>
@@ -58,7 +53,6 @@ const PublisherManager = () => {
                 ))}
             </div>
         </div>
-    </div>
   )
 }
 

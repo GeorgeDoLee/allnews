@@ -32,7 +32,7 @@ const SubArticles = ({subArticles}) => {
 
 const ArticlePage = () => {
     const { id } = useParams()
-    const {data: article, isLoading, error} = useFetch(`http://localhost:5000/api/articleGroups/${id}`)
+    const {data: article, isLoading, error} = useFetch(`https://localhost:7040/api/Article/c3e68ea1-f4c7-43e3-a244-fbfdbb715e88`)
     const [subArticles, setSubArticles] = useState(null);
     const [positionFilter, setPositionFilter] = useState(null);
     const positions = [

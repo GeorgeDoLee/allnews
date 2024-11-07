@@ -1,8 +1,9 @@
-const API_URL = 'https://localhost:7040/api/Publisher'
+const PUBLISHER_URL = 'https://localhost:7040/api/Publisher'
+const ARTICLE_URL = 'https://localhost:7040/api/Article'
 
 export const postPublisher = async (data) => {
     try {
-        const response = await fetch(API_URL, {
+        const response = await fetch(PUBLISHER_URL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -22,7 +23,7 @@ export const postPublisher = async (data) => {
 
 export const putPublisher = async (id, data) => {
     try {
-        const response = await fetch(`${API_URL}/${id}`, {
+        const response = await fetch(`${PUBLISHER_URL}/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -42,7 +43,7 @@ export const putPublisher = async (id, data) => {
 
 export const deletePublisher = async (id) => {
     try {
-        const response = await fetch(`${API_URL}/${id}`, {
+        const response = await fetch(`${PUBLISHER_URL}/${id}`, {
             method: 'DELETE',
         });
 
@@ -55,4 +56,25 @@ export const deletePublisher = async (id) => {
         throw error;
     }
 };
+
+export const postArticle = async (data) => {
+    try {
+        const response = await fetch(ARTICLE_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error: ${response.statusText}`);
+        }
+
+        return await response.json();
+    } catch (error) {
+        throw error;
+    }
+};
+
 

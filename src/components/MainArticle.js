@@ -1,15 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import useFetch from '../hooks/useFetch'
 
 const MainArticle = () => {
-    const {data: articles, isLoading, error} = useFetch('https://localhost:7040/api/Article');
-    const [mainArticle, setMainArticle] = useState(null);
-
-    useEffect(() => {
-        if(articles){
-            setMainArticle(articles[0]);
-        }
-    }, [articles]);
+    const {data: mainArticle, isLoading, error} = useFetch('https://localhost:7040/api/Article/c3e68ea1-f4c7-43e3-a244-fbfdbb715e88');
 
   return (
     <section className='w-full lg:h-[500px] h-[250px] bg-dark flex flex-col justify-end relative'>
