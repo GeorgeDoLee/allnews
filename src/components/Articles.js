@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import useFetch from '../hooks/useFetch'
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { toast } from './Toast';
+import { deleteArticle } from '../services/apiServices';
 
-const Article = ({ article, isBlindspot }) => {
+const Article = ({ article, isBlindspot, admin, refetch }) => {
+    const navigate = useNavigate();
     const [mostCoverage, setMostCoverage] = useState({ percentage: 0, position: '' });
 
     useEffect(() => {
@@ -17,9 +20,20 @@ const Article = ({ article, isBlindspot }) => {
         }
     }, [article.govCoverage, article.centerCoverage, article.oppCoverage]);
 
+    const handleDelete = async (id, title) => {
+        if(admin && window.confirm(`ნამდვილად გსურთ წაშალოთ სტატია "${title}"?`)){
+            try {
+                await deleteArticle(id);
+                toast.success('სტატია წაიშალა წარმატებით')
+                refetch();
+            } catch (error) {
+                toast.error('მოხდა შეცდომა')
+            }
+        }
+    }
+
     return (
-        <Link 
-            to={`/article/${article.id}`} 
+        <div 
             key={article.id} 
             className={`${isBlindspot ? Math.random() * 10 % 2 === 0 ? 'bg-gov' : 'bg-opp' : 'bg-transparent'} 
             ${isBlindspot ? 'p-2' : ''} 
@@ -27,7 +41,10 @@ const Article = ({ article, isBlindspot }) => {
         >
             <div className={`${isBlindspot ? 'bg-newspaper rounded-md p-2' : 'bg-transparent'} w-full`}>
                 <p className='mb-1 text-xs lg:mb-2 lg:text-sm case-on'>თემა &middot; კატეგორია</p>
-                <h1 className='text-base lg:text-lg text-dark line-clamp-4'>
+                <h1 
+                    onClick={() => navigate(`/article/${article.id}`)}
+                    className='text-base lg:text-lg text-dark line-clamp-4'
+                >
                     {article.title}
                 </h1>
                 
@@ -41,9 +58,16 @@ const Article = ({ article, isBlindspot }) => {
                         {mostCoverage.percentage}% {mostCoverage.position} წყაროები: {article.subArticleCount} სტატია
                     </p>
                 </div>
+                {admin && 
+                    <div className='flex items-center gap-10 mt-3'>
+                        <button className='text-base text-dark'>რედაქტირება</button>
+                        <button onClick={() => handleDelete(article.id, article.title)} className='text-base text-red-500'>წაშლა</button>
+                    </div>
+                }
             </div>
             {article.photo ? 
                 <img 
+                    onClick={() => navigate(`/article/${article.id}`)}
                     src={article.photo} 
                     alt={article.title} 
                     className='w-[250px] h-auto'
@@ -51,12 +75,12 @@ const Article = ({ article, isBlindspot }) => {
                 :
                 <div className='lg:w-[250px] w-full bg-dark h-[200px] lg:h-auto' /> 
             }
-        </Link>
+        </div>
     );
 }
 
-const Articles = ({isBlindspot = false}) => {
-    const {data: articles, isLoading, error} = useFetch('https://localhost:7040/api/Article')
+const Articles = ({isBlindspot = false, admin}) => {
+    const {data: articles, isLoading, error, refetch} = useFetch('https://localhost:7040/api/Article')
 
     useEffect(() => {
         if(articles){
@@ -70,7 +94,7 @@ const Articles = ({isBlindspot = false}) => {
             {isLoading && <p>loading...</p>}
             {error && <p>{error}</p>}
             {articles && articles.map((article) => (
-                <Article article={article} isBlindspot={isBlindspot} />
+                <Article article={article} isBlindspot={isBlindspot} admin={admin} refetch={refetch} />
             ))}
             <button className='self-center px-5 py-2 text-base font-semibold border w-fit text-dark border-dark font-firago case-on'>
                 მეტის ნახვა

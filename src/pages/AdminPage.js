@@ -1,6 +1,7 @@
 import React from 'react'
 import MainLayout from '../components/MainLayout'
 import PublisherManager from '../components/PublisherManager'
+import Articles from '../components/Articles'
 import { Link } from 'react-router-dom';
 
 const AdminPage = () => {
@@ -17,6 +18,11 @@ const AdminPage = () => {
             <div className='border-b border-dark'></div>
             
             <PublisherManager />
+
+            <div className='border-b border-dark'></div>
+
+
+            <Articles admin={true} />
           </div>
         </section>
     </MainLayout>

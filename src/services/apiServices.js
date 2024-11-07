@@ -77,4 +77,20 @@ export const postArticle = async (data) => {
     }
 };
 
+export const deleteArticle = async (id) => {
+    try {
+        const response = await fetch(`${ARTICLE_URL}/${id}`, {
+            method: 'DELETE',
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error: ${response.statusText}`);
+        }
+
+        return await response.json();
+    } catch (error) {
+        throw error;
+    }
+};
+
 

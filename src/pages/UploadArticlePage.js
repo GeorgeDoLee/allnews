@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MainLayout from '../components/MainLayout';
 import useFetch from '../hooks/useFetch';
 import { useForm, useFieldArray } from 'react-hook-form';
@@ -9,11 +9,22 @@ import { useNavigate } from 'react-router-dom';
 const UploadArticlePage = () => {
     const navigate = useNavigate();
     const { data: publishers, isLoading, error } = useFetch('https://localhost:7040/api/Publisher');
-    const { register, handleSubmit, control, formState: { errors } } = useForm();
+    const { register, handleSubmit, control, formState: { errors } } = useForm({
+        defaultValues: {
+            title: '',
+            publisherUrls: [{ publisherId: '', url: '' }],
+        },
+    });
     const { fields, append, remove } = useFieldArray({
         control,
         name: 'publisherUrls',
     });
+
+    useEffect(() => {
+        if (fields.length === 0) {
+            append({ publisherId: '', url: '' });
+        }
+    }, [append, fields.length]);
 
     const onSubmit = async (data) => {
         try {
