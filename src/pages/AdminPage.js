@@ -21,8 +21,10 @@ const AdminPage = () => {
 
             <div className='border-b border-dark'></div>
 
-
-            <Articles admin={true} />
+            <div>
+              <h1 className='mb-3 text-lg font-semibold font-firago case-on text-dark'>სტატიები</h1>
+              <Articles admin={true} />
+            </div>
           </div>
         </section>
     </MainLayout>

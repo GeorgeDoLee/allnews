@@ -2,7 +2,7 @@ import React from 'react'
 import useFetch from '../hooks/useFetch'
 
 const BlindspotBar = () => {
-  const {data: articles, isLoading, error} = useFetch('http://localhost:5000/api/articleGroups')
+  const {data: articles, isLoading, error} = useFetch('https://localhost:7040/api/Article')
 
   return (
     <section className='w-full'>
@@ -13,7 +13,13 @@ const BlindspotBar = () => {
         <div className='flex flex-col gap-5 text-dark font-firago'>
             {articles && articles.slice(0, 4).map((article, index) => (
                 <div key={index} className={`p-2 ${index % 2 === 0 ? 'bg-opp' : 'bg-gov'} rounded-lg`} >
-                    <div className='w-full h-[150px] bg-dark rounded-t-md bg-opacity-80' />
+                    {article.photo ? 
+                        <img src={article.photo} alt={article.title}
+                            className='w-full h-[150px] object-cover'
+                        />
+                        :
+                        <div className='w-full h-[150px] bg-dark rounded-t-md bg-opacity-80' />
+                    }
                     <div className='p-2 rounded-b-md bg-newspaper'>
                         <h1 className='text-sm font-semibold line-clamp-3 font-firago case-on'>{article.title}</h1>
                         <div className='flex items-center gap-2 mt-1'>
@@ -32,7 +38,7 @@ const BlindspotBar = () => {
                                 </div>
                             }
 
-                            <p className='text-xs font-firago'>85% {index % 2 === 0 ? 'სამთავრობო' : 'ოპოზიციური'} წყაროები</p>
+                            <p className='text-xs font-firago'>85% {index % 2 === 0 ? 'სამთავრობო' : 'ოპოზიციური'} წყარო</p>
                         </div>
                     </div>
                 </div>

@@ -55,7 +55,7 @@ const Article = ({ article, isBlindspot, admin, refetch }) => {
                         <div style={{ width: `${article.govCoverage}%` }} className="h-full bg-gov" />
                     </div>
                     <p className='text-xs lg:text-sm'>
-                        {mostCoverage.percentage}% {mostCoverage.position} წყაროები: {article.subArticleCount} სტატია
+                        {mostCoverage.percentage}% {mostCoverage.position} წყარო: {article.subArticleCount} სტატია
                     </p>
                 </div>
                 {admin && 

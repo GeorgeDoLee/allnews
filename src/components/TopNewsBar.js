@@ -3,7 +3,7 @@ import useFetch from '../hooks/useFetch'
 
 
 const TopNewsBar = () => {
-    const {data: articles, isLoading, error} = useFetch('http://localhost:5000/api/articleGroups')
+    const {data: articles, isLoading, error} = useFetch('https://localhost:7040/api/Article')
 
   return (
     <section className='w-full'>
@@ -21,7 +21,7 @@ const TopNewsBar = () => {
                             <div className='w-[25%] h-full bg-dark bg-opacity-50' />
                             <div className='w-[43%] h-full bg-blue-800' />
                         </div>
-                        <p className='text-xs'>43% ოპოზიციური წყაროები</p>
+                        <p className='text-xs'>43% ოპოზიციური წყარო</p>
                     </div>
                 </div>
             ))}

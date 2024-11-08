@@ -1,8 +1,8 @@
 import React from 'react'
 import useFetch from '../hooks/useFetch'
 
-const MainArticle = () => {
-    const {data: mainArticle, isLoading, error} = useFetch('https://localhost:7040/api/Article/c3e68ea1-f4c7-43e3-a244-fbfdbb715e88');
+const MainArticle = ({id = 'c3e68ea1-f4c7-43e3-a244-fbfdbb715e88'}) => {
+    const {data: mainArticle, isLoading, error} = useFetch(`https://localhost:7040/api/Article/${id}`);
 
   return (
     <section className='w-full lg:h-[500px] h-[250px] bg-dark flex flex-col justify-end relative'>
